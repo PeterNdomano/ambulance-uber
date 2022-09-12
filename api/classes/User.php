@@ -36,13 +36,11 @@ class User {
     $info = unsetSensitiveUserData($this->getData());
     $info['phone'] = ($info['usePhone']) ? ("+".$info['countryCode']." ".$info['phone']) : $info['phone'] ;
 
-    //market data
-    $market = $this->getUserMarket();
+
     //more to come eg orders etc....
 
     return array(
       "info" => $info,
-      "market" => $market,
     );
 
   }
@@ -167,20 +165,7 @@ class User {
     return $ffo;
   }
 
-  public function getUserMarket() {
-    global $conn;
-    $sql = $conn->prepare("SELECT * FROM markets WHERE userId = ?");
-    $sql->bind_param('s', $this->id);
-    if($sql->execute()) {
-      $result = $sql->get_result();
-      if(mysqli_num_rows($result) === 1) {
-        $row = mysqli_fetch_assoc($result);
-        return $row;
-      }
-    }
 
-    return null;
-  }
 
   public function createMarket(
     $name,

@@ -1,7 +1,7 @@
 <?php
 
 $dbHost = 'localhost';
-$dbName = 'igolyn';
+$dbName = 'am-uber';
 $dbUser = 'root';
 $dbPwd = '';
 

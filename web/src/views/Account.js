@@ -82,13 +82,13 @@ export default function Account() {
               {
                 (appContext.authData.status === 1) ?
                 (appContext.authData.user.info.role) :
-                "Buyer"
+                "Client"
               }
               </h3>
             </div>
           </div>
 
-          
+
           <div className="d-flex justify-content-end">
             <div onClick={showWishlist} className="text-center p-2" style={{ cursor:"pointer" }}>
               <TbHeart className="mShortcutIcon"/>

@@ -99,11 +99,15 @@ export default function LoginPage(props) {
             Or <span onClick={appContext.showRegisterPage} className="font-bold" style={{ color:"var(--primaryColor)", cursor:"pointer", }}>Register Now</span>
           </h6>
         </div>
-        <div className="text-left" style={{ marginTop:"30px" }}>
-          <h6>
-            Forgot your password? <span onClick={appContext.showResetPasswordPage} className="font-bold" style={{ color:"var(--danger)", cursor:"pointer", }}>Reset Here</span>
-          </h6>
-        </div>
+        {
+          /*
+          <div className="text-left" style={{ marginTop:"30px" }}>
+            <h6>
+              Forgot your password? <span onClick={appContext.showResetPasswordPage} className="font-bold" style={{ color:"var(--danger)", cursor:"pointer", }}>Reset Here</span>
+            </h6>
+          </div>
+          */
+        }
       </div>
     </div>
   )
