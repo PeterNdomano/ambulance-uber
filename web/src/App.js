@@ -87,36 +87,9 @@ export default function App() {
     return false;
   }
 
-  const isSeller = () => {
+  const isAdmin = () => {
     if(authData.user) {
-      if(authData.user.info.role === 'seller' && isLoggedIn()) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  const isMarketVerified = () => {
-    if(authData.user.market) {
-      if(authData.user.market.status === 1 && isLoggedIn() && isSeller()) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  const isMarketSuspended = () => {
-    if(authData.user.market) {
-      if(authData.user.market.status === 2 && isLoggedIn() && isSeller()) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  const isMarketUnverified = () => {
-    if(authData.user.market) {
-      if(authData.user.market.status === 0 && isLoggedIn() && isSeller()) {
+      if(authData.user.info.role === 'admin' && isLoggedIn()) {
         return true;
       }
     }
@@ -251,14 +224,11 @@ export default function App() {
     isLoggedIn,
     logOut,
     config,
-    isSeller,
+    isAdmin,
     setNavType,
     setNavId,
     isUserVerified,
     showVerificationPage,
-    isMarketVerified,
-    isMarketSuspended,
-    isMarketUnverified,
   }
   return (
     <>

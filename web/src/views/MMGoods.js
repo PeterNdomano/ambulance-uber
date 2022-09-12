@@ -10,7 +10,7 @@ import {
 } from '../Helpers';
 import $ from 'jquery';
 import { TbLayoutGridAdd } from 'react-icons/tb'
-import NewGood from '../views/NewGood';
+import NewAmb from '../views/NewAmb';
 import MMoneGood from '../ones/MMOneGood';
 
 export default function MMGoods(props) {
@@ -42,7 +42,7 @@ export default function MMGoods(props) {
           <div className="col-md-12 col-sm-12 text-right">
             <button
                 onClick={() => {
-                  appContext.setModal("Post New Good", <NewGood onSuccess={loadGoods}/>)
+                  appContext.setModal("Add New Ambulance", <NewAmb onSuccess={loadGoods}/>)
                 }}
                 className="btn btn-accent btn-ndoms">
                 <TbLayoutGridAdd size={18} />

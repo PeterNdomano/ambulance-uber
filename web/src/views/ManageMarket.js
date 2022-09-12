@@ -29,46 +29,38 @@ export default function SellerRequest(props) {
   const getView = () => {
     if(appContext.isLoggedIn()){
       if(appContext.isUserVerified()){
-        if(appContext.isSeller()){
+        if(appContext.isAdmin()){
           //already a seller
-          if(appContext.isMarketVerified()) {
-            //show market management
-            setView(
-              <>
-                <div className="tabBar" id="tabBar" data-navopen={false}>
-                  <div className="container">
-                    <ul className="nav nav-pills nav-justified" id="manage-market-tab" role="tablist">
-                      <li className="nav-item">
-                        <a className="nav-link active btn btn-sm" id="mm-goods-tab" data-toggle="pill" href="#mm-goods" role="tab" aria-controls="pills-home" aria-selected="true">Ambulances</a>
-                      </li>
-                      <li className="nav-item">
-                        <a className="nav-link btn btn-sm" id="mm-orders-tab" data-toggle="pill" href="#mm-orders" role="tab" aria-controls="pills-profile" aria-selected="false">Rides</a>
-                      </li>
-                      <li className="nav-item">
-                        <a className="nav-link btn btn-sm" id="mm-disputes-tab" data-toggle="pill" href="#mm-disputes" role="tab" aria-controls="pills-profile" aria-selected="false">Disputes</a>
-                      </li>
-                    </ul>
-                  </div>
+          setView(
+            <>
+              <div className="tabBar" id="tabBar" data-navopen={false}>
+                <div className="container">
+                  <ul className="nav nav-pills nav-justified" id="manage-market-tab" role="tablist">
+                    <li className="nav-item">
+                      <a className="nav-link active btn btn-sm" id="mm-goods-tab" data-toggle="pill" href="#mm-goods" role="tab" aria-controls="pills-home" aria-selected="true">Ambulances</a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link btn btn-sm" id="mm-orders-tab" data-toggle="pill" href="#mm-orders" role="tab" aria-controls="pills-profile" aria-selected="false">Rides</a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link btn btn-sm" id="mm-disputes-tab" data-toggle="pill" href="#mm-disputes" role="tab" aria-controls="pills-profile" aria-selected="false">Disputes</a>
+                    </li>
+                  </ul>
                 </div>
-                <div className="tab-content" id="pills-tabContent">
-                  <div className="tab-pane fade show active" id="mm-goods" role="tabpanel" aria-labelledby="debts-receivable-tab">
-                    <MMGoods/>
-                  </div>
-                  <div className="tab-pane fade" id="mm-orders" role="tabpanel" aria-labelledby="debts-payable-tab">
-                    <MMOrders/>
-                  </div>
-                  <div className="tab-pane fade" id="mm-disputes" role="tabpanel" aria-labelledby="debts-payable-tab">
-                    <MMDisputes/>
-                  </div>
+              </div>
+              <div className="tab-content" id="pills-tabContent">
+                <div className="tab-pane fade show active" id="mm-goods" role="tabpanel" aria-labelledby="debts-receivable-tab">
+                  <MMGoods/>
                 </div>
-              </>
-            )
-          }
-          else {
-            setView(
-              <Oops/>
-            )
-          }
+                <div className="tab-pane fade" id="mm-orders" role="tabpanel" aria-labelledby="debts-payable-tab">
+                  <MMOrders/>
+                </div>
+                <div className="tab-pane fade" id="mm-disputes" role="tabpanel" aria-labelledby="debts-payable-tab">
+                  <MMDisputes/>
+                </div>
+              </div>
+            </>
+          )
         }
         else {
           setView(

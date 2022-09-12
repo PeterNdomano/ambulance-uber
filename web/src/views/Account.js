@@ -166,7 +166,7 @@ export default function Account() {
         </div>
 
         {
-          (appContext.config.supportMultiSellers) ?
+          (appContext.isAdmin()) ?
           <div className="col-md-6 holderDiv">
             <div className="card">
               <div className="card-body">
@@ -174,20 +174,13 @@ export default function Account() {
                   <h3 className="mTitle align-self-center">Admin Panel</h3>
                 </div>
 
-                {
-                  (appContext.isSeller()) ?
-                  <div className="">
+                <div className="">
 
-                    <div style={{ marginTop:"20px" }} className="text-right">
-                      <button onClick={() => { window.location.href='#/manage' }} className="btn btn-accent btn-ndoms">Manage App</button>
-                    </div>
-
-                  </div> :
-                  <div className="text-right">
-                    <h6 className="text-left" style={{ marginBottom:"30px" }}>Start selling on our network of millions of customers</h6>
-                    <button  onClick={applyForSeller} className="btn btn-accent btn-ndoms">Become A Seller</button>
+                  <div style={{ marginTop:"20px" }} className="text-right">
+                    <button onClick={() => { window.location.href='#/manage' }} className="btn btn-accent btn-ndoms">Manage App</button>
                   </div>
-                }
+
+                </div>
               </div>
             </div>
           </div> : <></>
