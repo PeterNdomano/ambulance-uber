@@ -14,10 +14,10 @@ export default function Oops(props) {
 
   const deleteItem = async () => {
     showMainLoader();
-    await callApi("delete_good.php", { itemId: item.id }).then((response)=> {
+    await callApi("delete_amb.php", { itemId: item.id }).then((response)=> {
       hideMainLoader();
       if(response.status === 1) {
-        tellUser('Good was deleted', 'success');
+        tellUser('Ambulance was deleted', 'success');
         if(props.onSuccess){
           props.onSuccess();
         }
