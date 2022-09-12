@@ -24,24 +24,24 @@ class Feed {
 
     //build query
     if(strlen(trim($searchTerm)) > 0) {
-      $sql = $conn->prepare("SELECT * FROM goods
-          WHERE (title LIKE ? OR description LIKE ? ) AND ( status = 1)
+      $sql = $conn->prepare("SELECT * FROM ambulances
+          WHERE (hospitals LIKE ? OR routes LIKE ? ) AND ( status != 2)
           ORDER BY id DESC
         ");
       $searchTerm = '%'.$searchTerm.'%';
       $sql->bind_param('ss', $searchTerm, $searchTerm);
     }
     else if(strlen(trim($filter)) > 0 && $filter !== 'all') {
-      $sql = $conn->prepare("SELECT * FROM goods
-          WHERE ( tags LIKE ? ) AND ( status = 1)
+      $sql = $conn->prepare("SELECT * FROM ambulances
+          WHERE ( hospitals LIKE ? ) AND ( status != 2)
           ORDER BY id DESC
         ");
       $filter = '%'.$filter.'%';
       $sql->bind_param('s', $filter);
     }
     else {
-      $sql = $conn->prepare("SELECT * FROM goods
-          WHERE ( status = 1)
+      $sql = $conn->prepare("SELECT * FROM ambulances
+          WHERE ( status != 2)
           ORDER BY id DESC
         ");
     }

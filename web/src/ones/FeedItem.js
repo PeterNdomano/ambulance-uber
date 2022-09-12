@@ -16,7 +16,7 @@ export default function Oops(props) {
 
   const [ item, setItem ] = useState(props.item);
   const viewItem = () => {
-    let title = (item.title.length <= 20) ? item.title : (item.title).substr(0, 16)+"...";
+    let title = (item.regNo.length <= 20) ? item.regNo : (item.regNo).substr(0, 16)+"...";
     appContext.setModal(
       title,
       <OneGood item={item}/>
@@ -36,14 +36,14 @@ export default function Oops(props) {
       <div className="card">
         <div className="card-body">
           <div className="mImg">
-            <img src={BASE_API_URL+(item.img1 || item.img2 || item.img3)} />
+            <img src={BASE_API_URL+(item.img)} />
           </div>
           <div className="mTitle">
-            <span >{(item.title.length <= 30) ? item.title : (item.title).substr(0, 25)+"..."}</span>
+            <span >{(item.regNo.length <= 30) ? item.regNo : (item.regNo).substr(0, 25)+"..."}</span>
           </div>
           <div className="mPrice">
             <div className="text-muted">
-              Tsh {formatMoney(item.price)}
+              {item.routes}
             </div>
           </div>
         </div>
