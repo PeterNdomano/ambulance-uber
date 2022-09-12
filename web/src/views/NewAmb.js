@@ -31,7 +31,7 @@ export default function NewAmb(props) {
               hideMainLoader();
               if(response.status === 1) {
                 tellUser('New Ambulance was added', 'success');
-
+                appContext.clearModal();
                 if(props.onSuccess) {
                   props.onSuccess();
                 }

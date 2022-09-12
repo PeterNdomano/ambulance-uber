@@ -17,16 +17,7 @@ class User {
     return getUserData($this->id);
   }
 
-  public function isVerifiedSeller(){
-    $market = $this->getUserMarket();
-    $userData = $this->getData();
-    if($this->isSeller() && $this->isVerified()) {
-      if(intval($market['status']) === 1) {
-        return true;
-      }
-    }
-    return false;
-  }
+
 
   public function getShowData() {
     //this fetches basic data that may be needed for application to work
@@ -216,9 +207,9 @@ class User {
     return $ffo;
   }
 
-  public function isSeller() {
+  public function isAdmin() {
     $userData = $this->getData();
-    if(strtolower($userData['role']) === 'seller') {
+    if(strtolower($userData['role']) === 'admin') {
       return true;
     }
     return false;
