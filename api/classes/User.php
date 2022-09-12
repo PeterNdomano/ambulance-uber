@@ -303,8 +303,8 @@ class User {
         if($sql->execute()) {
           $userId = $sql->insert_id;
           startSession();
-          $_SESSION['igolynUserId'] = $userId;
-          $_SESSION['igolynUserToken'] = $token;
+          $_SESSION['amUberUserId'] = $userId;
+          $_SESSION['amUberUserToken'] = $token;
           $ffo = array(
             'status' => 1,
             'msg' => 'Account was created',
@@ -365,8 +365,8 @@ class User {
         if(password_verify($password, $userData['password'])) {
           //set session
           startSession();
-          $_SESSION['igolynUserId'] = $userData['id'];
-          $_SESSION['igolynUserToken'] = $userData['token'];
+          $_SESSION['amUberUserId'] = $userData['id'];
+          $_SESSION['amUberUserToken'] = $userData['token'];
           $ffo = array(
             'status' => 1,
             'msg' => 'Login successful',
@@ -399,9 +399,9 @@ class User {
 
   static function checkLogin() {
     startSession();
-    if(isset($_SESSION['igolynUserId']) && isset($_SESSION['igolynUserToken'])) {
-      $userId = htmlspecialchars($_SESSION['igolynUserId']);
-      $userToken = $_SESSION['igolynUserToken'];
+    if(isset($_SESSION['amUberUserId']) && isset($_SESSION['amUberUserToken'])) {
+      $userId = htmlspecialchars($_SESSION['amUberUserId']);
+      $userToken = $_SESSION['amUberUserToken'];
       $userData = getUserData($userId);
       if($userData['token'] === $userToken) {
         return true;
@@ -412,9 +412,9 @@ class User {
 
   static function getLoggedInUser() {
     //call this after chekLogin for better perfomance
-    if(isset($_SESSION['igolynUserId']) && isset($_SESSION['igolynUserToken'])) {
-      $userId = htmlspecialchars($_SESSION['igolynUserId']);
-      $userToken = $_SESSION['igolynUserToken'];
+    if(isset($_SESSION['amUberUserId']) && isset($_SESSION['amUberUserToken'])) {
+      $userId = htmlspecialchars($_SESSION['amUberUserId']);
+      $userToken = $_SESSION['amUberUserToken'];
       $userData = getUserData($userId);
       if($userData['token'] === $userToken) {
         return new self($userId);
