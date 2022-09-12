@@ -1,0 +1,879 @@
+:root {
+  /* colors */
+  --primaryColor: #323ea8;
+  --primaryColorDark: #0d155e;
+  --secondaryColor: #fefefe;
+  --secondaryColorFaint: #f7f6ed;
+  --grayColor: #cfcdc2;
+  --darkColor: #1e1e1e;
+  --accentColor: #ebc802;
+
+  /* dimensions */
+  --topBarHeight: 90px;
+  --sideNavWidth: 300px;
+  --minSideNavWidth: 270px;
+  --bannerHeight: 300px;
+  --searchBarWidth: 300px;
+  --searchBtnWidth: 60px;
+  --feedItemHeight: 330px;
+  --oneGoodImgHeight: 300px;
+
+  /* indexes */
+  --lowIndex: 1;
+  --midIndex: 10;
+  --highIndex: 100;
+  --ultraIndex: 99999999;
+}
+
+@media (max-width:576px) {
+  /* mobile root */
+  :root {
+    --sideNavWidth: 270px;
+    --bannerHeight: 200px;
+    --searchBarWidth: 80%;
+    --searchBtnWidth: 20%;
+    --feedItemHeight: 230px;
+  }
+}
+
+@media (min-width:1200px) {
+  /* large screens root */
+  :root {
+    --sideNavWidth: 400px;
+  }
+}
+
+/* shadows */
+.mShadow-1 {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.mShadow-2 {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.mShadow-3 {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.mShadow-4 {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+
+/* fonts */
+@font-face {
+  font-family: "OpenSansRegular";
+  src: local("OpenSansRegular"), url("./fonts/Open_Sans/regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "OpenSansBold";
+  src: local("OpenSansBold"), url("./fonts/Open_Sans/bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "OpenSansLight";
+  src: local("OpenSansLight"), url("./fonts/Open_Sans/light.ttf") format("truetype");
+}
+
+.font-bold{
+  font-family: "OpenSansBold" !important;
+}
+
+.font-regular{
+  font-family: "OpenSansRegular" !important;
+}
+
+.font-light{
+  font-family: "OpenSansLight" !important;
+}
+
+
+/* generals and utiliteis */
+
+
+body, html {
+  width: 100%;
+  font-family: "OpenSansLight" !important;
+  padding: 0;
+  margin: 0;
+  background: var(--secondaryColor);
+  color: var(--darkColor);
+}
+
+#root {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+*{
+  transition: all .5s ease;
+}
+
+button {
+  position: relative;
+
+}
+
+.btn-ndoms {
+  padding: 10px !important;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+  height: calc( var(--topBarHeight) * 0.5);
+  font-size: 12px;
+  font-family: "OpenSansBold";
+  margin: 0px !important;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 30px;
+}
+
+.btn-primary {
+  background: var(--primaryColor) !important;
+  color: var(--secondaryColor) !important;
+}
+
+.btn-accent {
+  background: var(--accentColor) !important;
+  color: var(--darkColor) !important;
+}
+
+.container {
+  position: relative;
+}
+
+/* tabBar */
+.tabBar {
+  width: 100%;
+  height: calc(var(--topBarHeight) * 0.45);
+  position: fixed;
+  z-index: var(--midIndex);
+  padding: 0px;
+  background: var(--secondaryColor);
+  overflow: hidden;
+  right: 0;
+  top: var(--topBarHeight);
+}
+
+.tabBar > .container {
+  background: none;
+  padding: 0px;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.tabBar > .container > ul {
+  width: 100%;
+  margin: 0 !important;
+  padding: 0px !important;
+  background: none;
+  height: 100%;
+  border-bottom: 2px solid var(--primaryColor);
+}
+
+.tabBar > .container > ul .btn {
+  background: none !important;
+  box-shadow: none !important;
+  color: var(--darkColor);
+  font-family: "OpenSansBold";
+  font-size: 12px;
+  padding-left: 10px !important;
+  height: 100%;
+  padding-right: 10px !important;
+}
+
+.tabBar > .container > ul .active {
+  color: var(--secondaryColor) !important;
+  background: var(--primaryColor) !important;
+  font-family: "OpenSansBold";
+}
+
+.tabBar[data-navopen="true"] {
+  width: calc(100% - var(--sideNavWidth));
+}
+
+@media (max-width:576px) {
+
+}
+
+/* tab-content */
+.tab-content, .tab-pane {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100%;
+}
+
+/* modal */
+.modal {
+
+}
+
+.modal-content {
+
+}
+
+.modal-header {
+
+}
+
+.modal-body {
+  max-height: calc( 100vh - (var(--topBarHeight) * 2.5)) !important;
+  overflow-y: auto;
+}
+
+
+/* oneRec */
+.oneRec {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.oneRec .mTitle {
+  font-size: 20px;
+  color: var(--primaryColor);
+  font-family: "OpenSansRegular";
+  margin-bottom: 15px;
+}
+
+.oneRec .mPrice {
+  font-size: 25px;
+  margin-bottom: -5px;
+}
+
+.oneRec .mQuantity {
+  margin-top: 20px;
+  font-size: 20px;
+  margin-bottom: -5px;
+}
+
+/* App */
+.App {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* MainLoader */
+
+.MainLoader {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: var(--ultraIndex);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+/* TopBar */
+.TopBar {
+  width: 100%;
+  height: var(--topBarHeight);
+  position: fixed;
+  z-index: var(--midIndex);
+  padding: 10px;
+  padding-top: 15px;
+  background: var(--secondaryColor);
+  overflow: hidden;
+  right: 0;
+  top: 0;
+}
+
+.TopBar > .container {
+  height: 100%;
+  width: 100%;
+  background: var(--secondaryColorFaint);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.TopBar .mIcon {
+  width: 50px;
+  height: 40px;
+  margin: 0;
+  color: var(--darkColor);
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  background: var(--accentColor);
+  cursor: pointer;
+}
+
+.TopBar .mTitle {
+  margin: 0;
+  padding: 0;
+  margin-left: 10px;
+  font-size: 22px;
+  font-family: "OpenSansBold";
+  text-transform: capitalize;
+  color: var(--primaryColor);
+}
+
+.TopBar .mBtn {
+  width: 50px;
+  height: 50px;
+  padding: 5px !important;
+  border-radius: 30px;
+  margin: 0 !important;
+  margin-left: 10px !important;
+  position: relative;
+  color: var(--primaryColor);
+}
+
+.TopBar .mBtn > .mCounter {
+  background: red;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+  font-size: 10px;
+  font-family: "OpenSansBold";
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--secondaryColor);
+  background: var(--accentColor);
+}
+
+.TopBar[data-navopen="true"] {
+  width: calc(100% - var(--sideNavWidth));
+}
+
+@media (max-width:576px) {
+
+}
+
+/* NavBar */
+.NavBar {
+  width: 100%;
+  height: calc( 0.7 * var(--topBarHeight));
+  padding: 0;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.NavBar[data-support-tabbar="true"] {
+  margin-top: calc(var(--topBarHeight) * 0.5);
+}
+
+.NavBar .mIcon {
+  width: 30px;
+  height: 30px;
+  padding: 0 !important;
+  margin: 0;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.NavBar .mTitle {
+  margin: 0;
+  font-family: "OpenSansLight";
+  padding: 0 !important;
+  font-size: 22px;
+  overflow: hidden;
+}
+
+
+/* SideNav */
+.SideNav {
+  width: var(--sideNavWidth);
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  position: fixed;
+  background: var(--secondaryColor);
+  z-index: var(--highIndex);
+  left: calc(-1.1 * var(--sideNavWidth)) !important;
+  top: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.SideNav > .container {
+  width: var(--minSideNavWidth);
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 10px;
+
+}
+
+.SideNav .mProfile {
+  margin-top: calc(0.2 * var(--topBarHeight));
+  margin-bottom: calc(0.2 * var(--topBarHeight));
+  height: calc(var(--topBarHeight) * 2);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.SideNav .mProfile .mIcon {
+  width: calc(0.7 * var(--topBarHeight));
+  height: calc(0.7 * var(--topBarHeight));
+  margin: 0 !important;
+  color:  var(--grayColor);
+}
+
+.SideNav .mProfile .mName {
+  line-height: 20px;
+  font-family: "OpenSansBold";
+  font-size: 20px;
+  margin: 0 !important;
+}
+
+.SideNav .mProfile .mRole {
+  line-height: 15px;
+  font-family: "OpenSansLight";
+  font-size: 14px;
+  margin: 0 !important;
+  text-transform: capitalize;
+}
+
+.SideNav .mNavItem {
+  margin-top: calc(0.1 * var(--topBarHeight));
+  margin-bottom: calc(0.1 * var(--topBarHeight));
+  height: calc(0.6 * var(--topBarHeight));
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--primaryColor);
+  cursor: pointer;
+  position: relative;
+}
+
+.SideNav .mNavItem[data-active="true"],
+.SideNav .mNavItem:hover {
+  background: var(--primaryColor);
+  color: var(--secondaryColor);
+}
+
+.SideNav .mNavItem .mLabel {
+  position: absolute;
+  right: 5px;
+  color: var(--secondaryColorFaint) !important;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: var(--highIndex);
+  padding-left: 10px;
+  padding-right: 10px;
+  background: var(--danger);
+  font-size: 12px;
+  font-family: "OpenSansBold";
+  border-radius: 5px;
+}
+
+.SideNav .mNavItem .mIcon {
+  width: calc(0.3 * var(--topBarHeight));
+  height: calc(0.3 * var(--topBarHeight));
+  margin: 0 !important;
+}
+
+.SideNav .mNavItem .mTitle {
+  margin: 0px;
+  font-size: 18px;
+  font-family: "OpenSansRegular";
+  margin-left: 15px;
+}
+
+
+.SideNav[data-navopen="true"] {
+  left: 0 !important;
+}
+
+/* FeedBanners */
+.FeedBanner{
+  height: var(--bannerHeight);
+  width: 100%;
+  background: var(--grayColor);
+  margin: 0;
+  padding: 0;
+}
+
+.FeedBanner img {
+  width: 100%;
+  height: 100%;
+}
+
+/* FeedBanners */
+.FeedFilters{
+  width: 100%;
+  height: var(--topBarHeight);
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: end;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.FeedFilters .btn{
+  text-transform: capitalize;
+  font-size: 12px;
+  font-family: "OpenSansRegular";
+  box-shadow: none;
+  border-radius: 20px;
+  border: 2px solid var(--darkColor);
+  margin: 5px;
+  white-space: nowrap;
+  background: none;
+  color: var(--darkColor);
+}
+
+.FeedFilters .btn[data-active="true"] {
+  background: var(--darkColor) !important;
+  color: var(--secondaryColor);
+}
+
+.FeedFilters::-webkit-scrollbar {
+ display: none;
+}
+
+/* FeedSearch */
+.FeedSearch{
+  width: 100%;
+  height: var(--topBarHeight);
+  margin: 0;
+  padding: 0;
+}
+
+.FeedSearch > .container {
+  height: 100%;
+  display: flex;
+  background: none;
+  padding: 0 !important;
+  align-items: center;
+  justify-content: right;
+  flex-direction: row;
+}
+
+.FeedSearch > .container input {
+  width: var(--searchBarWidth);
+  border-radius: 20px !important;
+  outline: none;
+  box-shadow: none;
+}
+
+.FeedSearch > .container input:focus{
+  outline: none !important;
+  box-shadow: none !important;
+  border: 1px solid var(--darkColor) !important;
+}
+
+.FeedSearch > .container button {
+  width: var(--searchBtnWidth);
+  padding: 10px;
+  background: var(--darkColor);
+  color: var(--secondaryColor);
+  border-radius: 20px;
+  box-shadow: none;
+  border: 2px solid var(--darkColor);
+}
+
+/* FeedSection */
+.FeedSection{
+  width: 100%;
+}
+
+.FeedSection .feedTitle {
+  font-size: 22px;
+  font-family: "OpenSansBold";
+  margin-bottom: calc(0.25 * var(--topBarHeight));
+}
+
+/* FeedItem */
+.FeedItem{
+  padding: 10px !important;
+  height: var(--feedItemHeight);
+}
+
+.FeedItem > .card {
+  height: 100%;
+  width: 100%;
+  box-shadow: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.FeedItem > .card > .card-body {
+  height: 100%;
+  width: 100%;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.FeedItem > .card > .card-body .mImg{
+  margin: 0 !important;
+  height: 70%;
+  background: none;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.FeedItem > .card > .card-body .mImg > img {
+  width: 100%;
+  height: 100%;
+}
+
+.FeedItem > .card > .card-body .mPrice{
+  margin: 0 !important;
+  height: 30px;
+  background: none;
+  overflow: hidden;
+  display: flex;
+  align-items: start;
+  justify-content: left;
+  color: var(--primaryColor);
+}
+
+.FeedItem > .card > .card-body .mPrice > div {
+  background: none;
+  font-size: 15px;
+  font-family: "OpenSansBold";
+  margin: 0;
+  padding: 0px;
+}
+
+.FeedItem > .card > .card-body .mTitle{
+  margin: 0 !important;
+  height: 20px;
+  background: none;
+  font-size: 16px;
+  word-wrap: break-word;
+  padding: 0px;
+  line-height: 18px;
+  font-family: "OpenSansBold";
+  overflow: hidden;
+}
+
+/* OneGood */
+.OneGood {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.OneGood .mImg {
+  width: 100%;
+  height: var(--oneGoodImgHeight);
+  overflow: hidden;
+  position: relative;
+}
+
+.OneGood  .mImg > img {
+  width: 100%;
+  height: 100%;
+}
+
+
+.OneGood  .mImg > .mNext,
+.OneGood  .mImg > .mPrev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.OneGood  .mImg > .mNext {
+  right: 0;
+}
+
+.OneGood  .mImg > .mPrev {
+  left: 0;
+}
+
+.OneGood .mActions {
+  width: 100%;
+  padding: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.OneGood .mActions > .mIcon {
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+}
+
+.OneGood .mTitle {
+  width: 100%;
+  padding: 10px;
+  overflow: hidden;
+  position: relative;
+  font-family: "OpenSansBold";
+  font-size: 20px;
+}
+
+.OneGood .mPrice {
+  width: 100%;
+  padding: 10px;
+  overflow: hidden;
+  position: relative;
+
+}
+
+.OneGood .mPrice > h2 {
+  font-family: "OpenSansLight";
+  font-size: "40px !important";
+  color: var(--primaryColor);
+}
+
+.OneGood .mDescription {
+  width: 100%;
+  padding: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.OneGood .mPayments {
+  width: 100%;
+  padding: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.OneGood .mCheckout {
+  width: 100%;
+  padding: 10px;
+  overflow: hidden;
+  position: relative;
+}
+/* MainBody */
+.MainBody {
+  width: 100%;
+  margin: 0;
+  margin-top: var(--topBarHeight);
+  overflow-x: hidden;
+  padding: 0;
+}
+
+.MainBody[data-navopen="true"] {
+  margin-left: var(--sideNavWidth);
+  width: calc(100% - var(--sideNavWidth));
+}
+
+.MainBody > .container {
+  min-width: 320px;
+  width: 100%;
+
+}
+
+/* accountIntro */
+.accountIntro {
+  margin-bottom: 20px;
+  background: var(--secondaryColorFaint);
+}
+
+.accountIntro > .accountInfo {
+  height: calc(var(--topBarHeight) * 1.5);
+}
+
+.accountIntro > .accountInfo .mIcon {
+  width: calc( var(--topBarHeight) * 0.7);
+  height: calc( var(--topBarHeight) * 0.7);
+  color: var(--grayColor);
+}
+
+.accountIntro > .accountInfo .mName {
+  margin: 0px;
+  margin-left: 20px;
+  line-height: 15px;
+  font-size: 20px;
+  color: var(--primaryColor);
+  text-transform: capitalize;
+  font-family: "OpenSansRegular";
+}
+
+.accountIntro > .accountInfo .mRole {
+  margin: 0px;
+  margin-left: 20px;
+  line-height: 20px;
+  font-size: 15px;
+  font-family: "OpenSansLight";
+  text-transform: capitalize;
+}
+
+.accountIntro > .text-right .mBtn {
+  padding: 10px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  height: calc( var(--topBarHeight) * 0.5);
+  font-size: 12px;
+  font-family: "OpenSansBold";
+  background: var(--primaryColor);
+  color: var(--secondaryColor);
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+}
+
+.accountIntro .mShortcutIcon {
+  width: 30px;
+  height: 30px;
+  color: var(--primaryColor);
+}
+
+.accountIntro .mShortcutTitle {
+  font-size: 13px;
+  font-family: "OpenSansRegular";
+  color: var(--primaryColor);
+  line-height: 13px;
+}
+
+/* accountDiv */
+.holderDiv {
+  margin-bottom: 20px;
+  padding: 5px !important;
+}
+
+.holderDiv .d-flex > .mTitle {
+  margin: 0px;
+  font-size: 20px;
+  font-family: "OpenSansBold";
+}
+
+.holderDiv .d-flex > .mBtn {
+  margin: 0px;
+  font-size: 18px;
+  font-family: "OpenSansRegular";
+  cursor: pointer;
+}
+
+.holderDiv .d-flex > .mCat {
+  margin: 0px;
+  font-size: 20px;
+  cursor: pointer;
+  font-family: "OpenSansLight";
+}
+
+.holderDiv .d-flex > .mCat .mLabel {
+  font-size: 15px;
+  padding: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: var(--accentColor);
+  margin-left: 10px;
+  border-radius: 10px;
+  font-family: "OpenSansBold";
+  color: var(--secondaryColor);
+}
+/* Footer */
+.Footer {
+  width: 100%;
+  padding: 10;
+  margin: 0;
+  padding-top: calc( 0.3 * var(--topBarHeight) );
+  padding-bottom: calc( 0.3 * var(--topBarHeight) );
+  background: var(--secondaryColorFaint);
+}
