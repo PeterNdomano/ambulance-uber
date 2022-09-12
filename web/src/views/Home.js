@@ -11,13 +11,12 @@ export const HomeContext = createContext(null);
 export default function Home() {
   const appContext = useContext(AppContext);
   const [ filters, setFilters ] = useState([
-    'all',
-    'fashion',
-    'electronics',
-    'tech',
-    'vehicles',
-    'decorations',
-    'food and drinks',
+    'Mlongamzila',
+    'Muhimbili',
+    'Hazina',
+    'PCMC',
+    'AGA KHAN',
+    'District Hosp',
   ])
 
   const [ activeFilter, setActiveFilter ] = useState('all');
@@ -242,7 +241,6 @@ export default function Home() {
 
   return (
     <HomeContext.Provider value={homeContext}>
-      <FeedBanner/>
       <FeedFilters/>
       <FeedSearch/>
       <FeedSection/>

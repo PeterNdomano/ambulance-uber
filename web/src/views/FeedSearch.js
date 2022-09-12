@@ -15,7 +15,7 @@ export default function FeedSearch() {
   return (
     <div className="FeedSearch">
       <div className="container">
-        <input value={homeContext.searchTerm} onChange={(e) => homeContext.handleSearchTerm(e.target.value)} placeholder="Write and click search" className="form-control"/>
+        <input value={homeContext.searchTerm} onChange={(e) => homeContext.handleSearchTerm(e.target.value)} placeholder="Write Hospital and click search" className="form-control"/>
         <button onClick={homeContext.searchFeed} className="btn btn-sm"><MdSearch size={20}/></button>
       </div>
     </div>

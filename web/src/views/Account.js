@@ -104,11 +104,11 @@ export default function Account() {
           <div className="d-flex justify-content-between">
             <div onClick={showWishlist} className="text-center p-2" style={{ cursor:"pointer" }}>
               <TbHeart className="mShortcutIcon"/>
-              <h3 className="mShortcutTitle">My<br/>Wishlist</h3>
+              <h3 className="mShortcutTitle">Change<br/>Password</h3>
             </div>
             <div onClick={showSettings} className="text-center p-2" style={{ cursor:"pointer" }}>
               <TbSettings className="mShortcutIcon"/>
-              <h3 className="mShortcutTitle">Account<br/>Settings</h3>
+              <h3 className="mShortcutTitle">Change<br/>Email/Phone</h3>
             </div>
             <div onClick={showAddress} className="text-center p-2" style={{ cursor:"pointer" }}>
               <MdOutlineLocalShipping className="mShortcutIcon"/>
