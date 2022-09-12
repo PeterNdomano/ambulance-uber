@@ -19,7 +19,7 @@ export default function MMGoods(props) {
   const [ ready, setReady ] = useState(false);
   const loadGoods = async () => {
     setReady(false);
-    await callApi('get_seller_goods.php', {}).then((response) => {
+    await callApi('get_ambulances.php', {}).then((response) => {
       if(response.status === 1) {
         setGoods(response.data);
         setReady(true);

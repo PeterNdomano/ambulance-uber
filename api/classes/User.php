@@ -36,11 +36,9 @@ class User {
 
   }
 
-  public function getSellerGoods() {
+  public function getAmbs() {
     global $conn;
-    $market = $this->getUserMarket();
-    $sql = $conn->prepare("SELECT * FROM goods WHERE marketId = ? ORDER BY id DESC");
-    $sql->bind_param('s', $market['id']);
+    $sql = $conn->prepare("SELECT * FROM ambulances ORDER BY id DESC");
     $sql->execute();
     $result = $sql->get_result();
     if(mysqli_num_rows($result) > 0) {

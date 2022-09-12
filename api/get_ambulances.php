@@ -6,11 +6,11 @@ require_once dirname(__FILE__).'/functions.php';
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
   if(User::checkLogin() === true) {
     $user = User::getLoggedInUser();
-    if($user->isVerifiedSeller()) {
+    if($user->isAdmin()) {
       echo json_encode(array(
         'status' => 1,
-        'msg' => 'Seller goods',
-        'data' => $user->getSellerGoods(),
+        'msg' => 'Ambulances',
+        'data' => $user->getAmbs(),
       ));
     }
     else {

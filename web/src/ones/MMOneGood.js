@@ -46,13 +46,11 @@ export default function Oops(props) {
   return (
     <div className="oneRec card">
       <div className="card-body">
-        <h3 className="mTitle">{item.title}</h3>
+        <h3 className="mTitle">{item.regNo}</h3>
 
-        <h3 className="mPrice">{formatMoney(item.price)}</h3>
-        <small>price per {item.unit}</small>
+        <h6 className="mPrice">{item.hospitals}</h6>
+        <small>{item.routes}</small>
 
-        <h3 className="mQuantity">{item.quantity}</h3>
-        <small>Available Quantity in {item.unit}</small>
 
         <div className="text-right" style={{ marginTop:"20px" }}>
           <button
