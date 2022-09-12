@@ -88,6 +88,18 @@ export default function Account() {
             </div>
           </div>
 
+          
+          <div className="d-flex justify-content-end">
+            <div onClick={showWishlist} className="text-center p-2" style={{ cursor:"pointer" }}>
+              <TbHeart className="mShortcutIcon"/>
+              <h3 className="mShortcutTitle">Change<br/>Password</h3>
+            </div>
+            <div onClick={showSettings} className="text-center p-2" style={{ cursor:"pointer" }}>
+              <TbSettings className="mShortcutIcon"/>
+              <h3 className="mShortcutTitle">Change<br/>Email/Phone</h3>
+            </div>
+          </div>
+
           <div className="text-right">
             {
               (appContext.authData.status === 1) ?
@@ -98,26 +110,6 @@ export default function Account() {
                 <MdLogin size={20}/> &nbsp; Log In
               </button>
             }
-
-          </div>
-
-          <div className="d-flex justify-content-between">
-            <div onClick={showWishlist} className="text-center p-2" style={{ cursor:"pointer" }}>
-              <TbHeart className="mShortcutIcon"/>
-              <h3 className="mShortcutTitle">Change<br/>Password</h3>
-            </div>
-            <div onClick={showSettings} className="text-center p-2" style={{ cursor:"pointer" }}>
-              <TbSettings className="mShortcutIcon"/>
-              <h3 className="mShortcutTitle">Change<br/>Email/Phone</h3>
-            </div>
-            <div onClick={showAddress} className="text-center p-2" style={{ cursor:"pointer" }}>
-              <MdOutlineLocalShipping className="mShortcutIcon"/>
-              <h3 className="mShortcutTitle">Shipping<br/>Address</h3>
-            </div>
-            <div onClick={showPayments} className="text-center p-2" style={{ cursor:"pointer" }}>
-              <MdOutlinePayments className="mShortcutIcon"/>
-              <h3 className="mShortcutTitle">Payment<br/>Options</h3>
-            </div>
           </div>
 
         </div>
@@ -126,8 +118,7 @@ export default function Account() {
           <div className="card">
             <div className="card-body">
               <div className="d-flex justify-content-between" style={{ height:"calc(0.5 * var(--topBarHeight))" }}>
-                <h3 className="mTitle align-self-center">My Orders</h3>
-                <h6 className="mBtn align-self-center">View all <MdNavigateNext size={15}/></h6>
+                <h3 className="mTitle align-self-center">My Rides</h3>
               </div>
 
               <div className="d-flex justify-content-between" style={{ height:"calc(0.5 * var(--topBarHeight))" }}>
@@ -180,44 +171,15 @@ export default function Account() {
             <div className="card">
               <div className="card-body">
                 <div className="d-flex justify-content-between" style={{ height:"calc(0.5 * var(--topBarHeight))" }}>
-                  <h3 className="mTitle align-self-center">My Market</h3>
-                  {
-                    (appContext.isSeller()) ?
-                    <h6 onClick={() => { window.location.href='#/manage-market' }} className="mBtn align-self-center">Manage <MdNavigateNext size={15}/></h6>:
-                    <></>
-                  }
+                  <h3 className="mTitle align-self-center">Admin Panel</h3>
                 </div>
 
                 {
                   (appContext.isSeller()) ?
                   <div className="">
 
-                    <div className="d-flex justify-content-between" style={{ height:"calc(0.5 * var(--topBarHeight))" }}>
-                      <h3 className="mCat align-self-center">
-                        New Orders
-                        <span className="mLabel">900</span>
-                      </h3>
-                      <h6 className="mBtn align-self-center"><MdNavigateNext size={25}/></h6>
-                    </div>
-
-                    <div className="d-flex justify-content-between" style={{ height:"calc(0.5 * var(--topBarHeight))" }}>
-                      <h3 className="mCat align-self-center">
-                        Unshipped Orders
-                        <span className="mLabel">900</span>
-                      </h3>
-                      <h6 className="mBtn align-self-center"><MdNavigateNext size={25}/></h6>
-                    </div>
-
-                    <div className="d-flex justify-content-between" style={{ height:"calc(0.5 * var(--topBarHeight))" }}>
-                      <h3 className="mCat align-self-center">
-                        Disputes
-                        <span className="mLabel">900</span>
-                      </h3>
-                      <h6 className="mBtn align-self-center"><MdNavigateNext size={25}/></h6>
-                    </div>
-
                     <div style={{ marginTop:"20px" }} className="text-right">
-                      <button onClick={() => { window.location.href='#/manage-market' }} className="btn btn-accent btn-ndoms">Manage Your Market</button>
+                      <button onClick={() => { window.location.href='#/manage' }} className="btn btn-accent btn-ndoms">Manage App</button>
                     </div>
 
                   </div> :

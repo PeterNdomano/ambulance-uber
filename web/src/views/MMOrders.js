@@ -20,7 +20,7 @@ export default function MMOrders(props) {
 
   return (
     <>
-      <NavBar supportTabbar={true} title="Customers' Orders"/>
+      <NavBar supportTabbar={true} title="Clients' Rides"/>
       <div className="container">
         <div className="row">
           <div className="col-md-12 col-sm-12">

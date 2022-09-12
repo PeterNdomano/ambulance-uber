@@ -36,7 +36,7 @@ export default function MMGoods(props) {
 
   return (
     <>
-      <NavBar supportTabbar={true} title="Your Goods"/>
+      <NavBar supportTabbar={true} title="Ambulances"/>
       <div className="container">
         <div className="row">
           <div className="col-md-12 col-sm-12 text-right">
@@ -46,7 +46,7 @@ export default function MMGoods(props) {
                 }}
                 className="btn btn-accent btn-ndoms">
                 <TbLayoutGridAdd size={18} />
-                &nbsp;Post New
+                &nbsp;Add New
               </button>
             <hr/>
           </div>

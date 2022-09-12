@@ -32,14 +32,14 @@ export default function Oops(props) {
   }, [ props.item ]);
 
   return (
-    <div className="FeedItem col-6 col-md-3" onClick={viewItem}>
+    <div className="FeedItem col-sm-12 col-md-4" onClick={viewItem}>
       <div className="card">
         <div className="card-body">
           <div className="mImg">
             <img src={BASE_API_URL+(item.img1 || item.img2 || item.img3)} />
           </div>
           <div className="mTitle">
-            <span >{(item.title.length <= 17) ? item.title : (item.title).substr(0, 14)+"..."}</span>
+            <span >{(item.title.length <= 30) ? item.title : (item.title).substr(0, 25)+"..."}</span>
           </div>
           <div className="mPrice">
             <div className="text-muted">

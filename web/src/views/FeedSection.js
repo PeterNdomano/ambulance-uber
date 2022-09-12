@@ -19,8 +19,8 @@ export default function FeedSection() {
           (homeContext.isSearch) ?
           "Search results" :
           (homeContext.activeFilter === "all") ?
-          "Top picks" :
-          "Top picks in "+homeContext.activeFilter
+          "Available Ambulances" :
+          "Available Ambulances for "+homeContext.activeFilter
         }
       </h3>
 

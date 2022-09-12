@@ -35,6 +35,7 @@ export default function App() {
 
 
   const openSideNav = () => {
+    /*
     document.getElementById('sideNav').dataset['navopen'] = "true";
     document.getElementById('topBar').dataset['navopen'] = "true";
     document.getElementById('mainBody').dataset['navopen'] = "true";
@@ -43,9 +44,11 @@ export default function App() {
     } catch (e) {
 
     }
+    */
   }
 
   const closeSideNav = () => {
+    /*
     document.getElementById('sideNav').dataset['navopen'] = "false";
     document.getElementById('topBar').dataset['navopen'] = "false";
     document.getElementById('mainBody').dataset['navopen'] = "false";
@@ -54,6 +57,7 @@ export default function App() {
     } catch (e) {
 
     }
+    */
   }
 
   const toggleSideNav = () => {

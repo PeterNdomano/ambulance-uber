@@ -149,7 +149,7 @@ export function getMainView(type, id) {
     //account view
     return <SellerRequest/>;
   }
-  else if(type === "manage-market" && id === undefined) {
+  else if(type === "manage" && id === undefined) {
     //account view
     return <ManageMarket/>;
   }

@@ -39,10 +39,10 @@ export default function SellerRequest(props) {
                   <div className="container">
                     <ul className="nav nav-pills nav-justified" id="manage-market-tab" role="tablist">
                       <li className="nav-item">
-                        <a className="nav-link active btn btn-sm" id="mm-goods-tab" data-toggle="pill" href="#mm-goods" role="tab" aria-controls="pills-home" aria-selected="true">Goods</a>
+                        <a className="nav-link active btn btn-sm" id="mm-goods-tab" data-toggle="pill" href="#mm-goods" role="tab" aria-controls="pills-home" aria-selected="true">Ambulances</a>
                       </li>
                       <li className="nav-item">
-                        <a className="nav-link btn btn-sm" id="mm-orders-tab" data-toggle="pill" href="#mm-orders" role="tab" aria-controls="pills-profile" aria-selected="false">Orders</a>
+                        <a className="nav-link btn btn-sm" id="mm-orders-tab" data-toggle="pill" href="#mm-orders" role="tab" aria-controls="pills-profile" aria-selected="false">Rides</a>
                       </li>
                       <li className="nav-item">
                         <a className="nav-link btn btn-sm" id="mm-disputes-tab" data-toggle="pill" href="#mm-disputes" role="tab" aria-controls="pills-profile" aria-selected="false">Disputes</a>

@@ -16,7 +16,7 @@
   --searchBarWidth: 300px;
   --searchBtnWidth: 60px;
   --feedItemHeight: 330px;
-  --oneGoodImgHeight: 300px;
+  --oneGoodImgHeight: 400px;
 
   /* indexes */
   --lowIndex: 1;
@@ -32,7 +32,7 @@
     --bannerHeight: 200px;
     --searchBarWidth: 80%;
     --searchBtnWidth: 20%;
-    --feedItemHeight: 230px;
+    --feedItemHeight: 350px;
   }
 }
 
@@ -612,7 +612,7 @@ button {
 
 .FeedItem > .card > .card-body .mImg{
   margin: 0 !important;
-  height: 70%;
+  height: 85%;
   background: none;
   overflow: hidden;
   border-radius: 15px;

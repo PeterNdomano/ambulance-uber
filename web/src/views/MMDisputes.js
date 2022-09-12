@@ -20,7 +20,7 @@ export default function MMDisputes(props) {
 
   return (
     <>
-      <NavBar supportTabbar={true} title="Customers' Disputes"/>
+      <NavBar supportTabbar={true} title="Clients' Disputes"/>
       <div className="container">
         <div className="row">
           <div className="col-md-12 col-sm-12">
