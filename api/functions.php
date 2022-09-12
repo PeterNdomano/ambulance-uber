@@ -119,6 +119,21 @@ function getUserData($id) {
   }
 }
 
+function getAmbData($id) {
+  global $conn;
+  $sql = $conn->prepare("SELECT * FROM ambulances WHERE id = ?");
+  $sql->bind_param('s', $id);
+  $sql->execute();
+  $result = $sql->get_result();
+  if(mysqli_num_rows($result) === 1) {
+    $row = mysqli_fetch_assoc($result);
+    return $row;
+  }
+  else {
+    return null;
+  }
+}
+
 function calcMaxBatchIndex($data, $batchSize) {
   if(sizeof($data) === 0) {
     return 0;

@@ -7,151 +7,103 @@ import { MdLogin, MdOutlineLocalShipping, MdOutlinePayments, MdNavigateNext, MdO
 import { TbHeart, TbSettings } from 'react-icons/tb';
 import $ from 'jquery';
 
-export default function EditGood(props) {
+export default function NewAmb(props) {
   const appContext = useContext(AppContext);
   const [ item, setItem ] = useState(props.item);
 
   const submit = async () => {
-    let title = $('#gTitle').val();
-    let price = $('#gPrice').val();
-    let unit = $('#gUnit').val();
-    let quantity = $('#gQuantity').val();
-    let description = $('#gDescription').val();
-    let img1 = document.getElementById('img1').files[0];
-    let img2 = document.getElementById('img2').files[0];
-    let img3 = document.getElementById('img3').files[0];
+    let regNo = $('#aRegNo').val();
+    let hospitals = $('#aHospitals').val();
+    let routes = $('#aRoutes').val();
+    let img = document.getElementById('img').files[0];
 
-    if(title.trim().length > 0){
-      if(price.trim().length > 0 && Number(price) > 0){
-        if(description.trim().length > 0){
-          if(unit.trim().length > 0) {
-            if(quantity.trim().length > 0 && Number(quantity) > 0) {
-              let formData = new FormData();
-              formData.append('itemId', item.id);
-              formData.append('title', title);
-              formData.append('quantity', quantity);
-              formData.append('unit', unit);
-              formData.append('price', price);
-              formData.append('description', description);
-              formData.append('img1', img1);
-              formData.append('img2', img2);
-              formData.append('img3', img3);
-              showMainLoader();
-              await callApi2("edit_good.php", formData).then((response) => {
-                hideMainLoader();
-                if(response.status === 1) {
-                  appContext.clearModal();
-                  tellUser("Edited successfully", 'success');
-                  if(props.onSuccess){
-                    props.onSuccess();
-                  }
+    if(regNo.trim().length > 0) {
+      if(hospitals.trim().length > 0) {
+        if(routes.trim().length > 0) {
+          if(img || !img) {
+            let formData = new FormData();
+            formData.append('itemId', item.id);
+            formData.append('regNo', regNo);
+            formData.append('hospitals', hospitals);
+            formData.append('routes', routes);
+            formData.append('img', img);
+
+            showMainLoader();
+            await callApi2("edit_ambulance.php", formData).then((response) => {
+              hideMainLoader();
+              if(response.status === 1) {
+                tellUser('Ambulance was edited', 'success');
+                appContext.clearModal();
+                if(props.onSuccess) {
+                  props.onSuccess();
                 }
-                else {
-                  tellUser(response.msg);
-                }
-              });
-            }
-            else {
-              tellUser('Invalid quantity');
-            }
+              }
+              else {
+                tellUser(response.msg);
+              }
+            });
           }
           else {
-            tellUser('Invalid unit');
+            tellUser('Please upload an image of this ambulance');
           }
         }
         else {
-          tellUser('Invalid description');
+          tellUser('Invalid route');
         }
       }
       else {
-        tellUser('Invalid price');
+        tellUser('Invalid hospital');
       }
     }
     else {
-      tellUser('Invalid title');
+      tellUser('Invalid registration number');
     }
   }
 
   useEffect(() => {
-    //..
-  }, []);
+    setItem(props.item)
+  }, [ props.item ]);
 
   useEffect(() => {
-    setItem(props.item);
-  }, [ props.item ]);
+    //..
+  }, []);
 
   return (
     <div className="container">
       <div className="row">
         <div className="col-sm-12 col-md-6">
           <div className="form-group">
-            <label>Title</label>
-            <input defaultValue={item.title} maxLength={200} id="gTitle" type="text" className="form-control"/>
-          </div>
-          <div className="form-group">
-            <label>Unit</label>
-            <small className="form-text text-muted">For example set, Piece, Dozen, Lots</small>
-            <input defaultValue={item.unit} id="gUnit" type="text" className="form-control"/>
-          </div>
-          <div className="form-group">
-            <label>Unit Price</label>
-            <input defaultValue={item.price} id="gPrice" type="number" className="form-control"/>
+            <label>Registration Number</label>
+            <input defaultValue={item.regNo} maxLength={200} id="aRegNo" type="text" className="form-control"/>
           </div>
 
           <div className="form-group">
-            <label>Description</label>
-            <textarea defaultValue={item.description} id="gDescription" className="form-control"></textarea>
+            <label>Hospital(s)</label>
+            <small className="form-text text-muted">Separate multiple with commas</small>
+            <input defaultValue={item.hospitals} id="aHospitals" type="text" className="form-control"/>
           </div>
+
+          <div className="form-group">
+            <label>Serving areas and routes</label>
+            <small className="form-text text-muted">Separate multiple with commas</small>
+            <textarea id="aRoutes" className="form-control" defaultValue={item.routes}></textarea>
+          </div>
+
         </div>
 
         <div className="col-sm-12 col-md-6">
+
           <div className="form-group">
-            <label>Available Quantity</label>
-            <input defaultValue={item.quantity} id="gQuantity" type="number" className="form-control"/>
+            <label>Image</label><hr/>
+            <img src={BASE_API_URL+item.img} style={{ height:"var(--topBarHeight)" }}/>
+            <small className="text-danger form-text">Upload Image below to replace current image</small>
+            <input id="img" className="form-control" type="file"/>
           </div>
-          <div className="form-group">
-            <label>Image #1</label>
-            {
-              (item.img1) ?
-              <>
-                <hr/>
-                <img src={BASE_API_URL+item.img1} style={{ height:"var(--topBarHeight)" }}/>
-                <small className="text-danger form-text">Upload Image below to replace Image #1</small>
-              </>:
-              ""
-            }
-            <input id="img1" className="form-control" type="file"/>
-          </div>
-          <div className="form-group">
-            <label>Image #2</label>
-            {
-              (item.img2) ?
-              <>
-                <hr/>
-                <img src={BASE_API_URL+item.img2} style={{ height:"var(--topBarHeight)" }}/>
-                <small className="text-danger form-text">Upload Image below to replace Image #2</small>
-              </>:
-              ""
-            }
-            <input id="img2" className="form-control" type="file"/>
-          </div>
-          <div className="form-group">
-            <label>Image #3</label>
-            {
-              (item.img3) ?
-              <>
-                <hr/>
-                <img src={BASE_API_URL+item.img3} style={{ height:"var(--topBarHeight)" }}/>
-                <small className="text-danger form-text">Upload Image below to replace Image #3</small>
-              </>:
-              ""
-            }
-            <input id="img3" className="form-control" type="file"/>
-          </div>
+
         </div>
 
-        <div className="col-sm-12 col-md-12 text-center">
-          <button onClick={submit} className="btn btn-primary btn-ndoms" style={{ minWidth:"200px" }}>SAVE CHANGES</button>
+        <div className="col-sm-12 col-md-12 text-center" style={{ paddingBottom:"30px" }}>
+          <button onClick={submit} className="btn btn-primary btn-ndoms" style={{ minWidth:"200px" }}>SUBMIT</button>
         </div>
 
       </div>
