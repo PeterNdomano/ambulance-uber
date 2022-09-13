@@ -15,22 +15,10 @@ export default function Oops(props) {
   const homeContext = useContext(HomeContext);
 
   const [ item, setItem ] = useState(props.item);
-  const [ imgArray, setImgArray ] = useState(() => {
-    let arr = [];
-    if(item.img1) {
-      arr.push(item.img1);
-    }
 
-    if(item.img2) {
-      arr.push(item.img2);
-    }
-
-    if(item.img3) {
-      arr.push(item.img3);
-    }
-
-    return arr;
-  });
+  const bookNow = () => {
+    
+  }
 
   useEffect(() => {
 
@@ -38,76 +26,48 @@ export default function Oops(props) {
 
   useEffect(() => {
     setItem(props.item);
-    setImgArray(() => {
-      let arr = [];
-      if(props.item.img1) {
-        arr.push(props.item.img1);
-      }
 
-      if(props.item.img2) {
-        arr.push(props.item.img2);
-      }
-
-      if(props.item.img3) {
-        arr.push(props.item.img3);
-      }
-
-      return arr;
-    })
   }, [ props.item ]);
 
 
   return (
     <div className="OneGood">
-      <div className="row">
-        <div className="col-md-6 col-sm-12">
-          <div className="mImg">
-            {
-              (imgArray.length >= 2) ?
-              <>
-                <button className="btn btn-sm mNext"><MdNavigateNext size={20}/></button>
-                <button className="btn btn-sm mPrev"><MdOutlineNavigateBefore size={20}/></button>
-              </>: ""
-            }
-            {
-              imgArray.map((item, i) => {
-                return (
-                  <img key={i} src={BASE_API_URL+item}/>
-                )
-              })
-            }
-
-          </div>
-
-          <div className="mActions d-flex justify-content-end">
-            <TbHeart className="mIcon"/>
-            <FiShoppingCart className="mIcon"/>
-          </div>
-
-          <div className="mTitle text-muted">
-            {item.title}
-          </div>
-
-          <div className="mPrice">
-            <h2 className="m1">Tsh {formatMoney(item.price)}</h2>
-            <small>Per {item.unit}</small><br/>
-            <small className="font-bold text-muted">{formatMoney(item.quantity)} Available</small>
-          </div>
+      <div style={{ maxWidth:"400px", margin:"0 auto", }}>
+        <div className="mImg">
+          <img src={BASE_API_URL+item.img}/>
         </div>
 
-        <div className="com-md-6 col-sm-12">
-          <div className="mDescription">
-            <h6 className="font-bold">Description</h6>
-            <pre className="font-light">{item.description}</pre>
-          </div>
-
-          <div className="mCheckout">
-            <button className="btn btn-ndoms btn-block btn-dark">
-              Check Out
-            </button>
-          </div>
+        <div className="mTitle text-muted">
+          {item.regNo}
         </div>
+
+        <div className="mPrice">
+          <small>Hospitals</small><br/>
+          <h4 className="m1">{item.hospitals}</h4>
+        </div>
+
+        <div className="mPrice">
+          <small>Availability Status</small><br/>
+          {
+            (Number(item.status) === 1) ?
+            <h6 className="text-danger font-bold">Not Available</h6> :
+            <h6 className="text-success font-bold">Available</h6>
+          }
+        </div>
+
+        <div className="mDescription">
+          <h6 className="font-bold">Routes</h6>
+          <pre className="font-light">{item.routes}</pre>
+        </div>
+
+        <div className="mCheckout">
+          <button onClick={bookNow} className="btn btn-ndoms btn-block btn-dark">
+            Book Now
+          </button>
+        </div>
+
       </div>
+
     </div>
   );
 }
