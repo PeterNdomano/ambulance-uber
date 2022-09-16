@@ -17,7 +17,7 @@ export default function Oops(props) {
   const [ item, setItem ] = useState(props.item);
 
   const bookNow = () => {
-    
+
   }
 
   useEffect(() => {
@@ -42,6 +42,11 @@ export default function Oops(props) {
         </div>
 
         <div className="mPrice">
+          <small>Price Per Kilometer</small><br/>
+          <h4 className="m1">Tsh {formatMoney(item.price)}</h4>
+        </div>
+
+        <div className="mPrice">
           <small>Hospitals</small><br/>
           <h4 className="m1">{item.hospitals}</h4>
         </div>
@@ -58,10 +63,14 @@ export default function Oops(props) {
         <div className="mDescription">
           <h6 className="font-bold">Routes</h6>
           <pre className="font-light">{item.routes}</pre>
+          <div className="form-group">
+            <label>Your Location</label>
+            <textarea className="form-control"></textarea>
+          </div>
         </div>
 
         <div className="mCheckout">
-          <button onClick={bookNow} className="btn btn-ndoms btn-block btn-dark">
+          <button onClick={bookNow} className="btn btn-ndoms btn-block btn-dark" style={{ height:"60px" }}>
             Book Now
           </button>
         </div>
