@@ -32,7 +32,7 @@
     --bannerHeight: 200px;
     --searchBarWidth: 80%;
     --searchBtnWidth: 20%;
-    --feedItemHeight: 350px;
+    --feedItemHeight: 360px;
   }
 }
 
@@ -612,7 +612,7 @@ button {
 
 .FeedItem > .card > .card-body .mImg{
   margin: 0 !important;
-  height: 85%;
+  height: 82%;
   background: none;
   overflow: hidden;
   border-radius: 15px;
@@ -636,7 +636,7 @@ button {
 
 .FeedItem > .card > .card-body .mPrice > div {
   background: none;
-  font-size: 15px;
+  font-size: 20px;
   font-family: "OpenSansBold";
   margin: 0;
   padding: 0px;

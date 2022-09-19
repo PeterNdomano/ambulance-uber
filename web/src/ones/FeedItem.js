@@ -43,7 +43,7 @@ export default function Oops(props) {
           </div>
           <div className="mPrice">
             <div className="text-muted">
-              {item.routes}
+              Tsh {formatMoney(item.price)}
             </div>
           </div>
         </div>
