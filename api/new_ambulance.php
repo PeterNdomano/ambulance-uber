@@ -15,6 +15,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $regNo = htmlspecialchars($_POST['regNo']);
         $hospitals = htmlspecialchars($_POST['hospitals']);
         $routes = htmlspecialchars($_POST['routes']);
+        $price = htmlspecialchars($_POST['price']);
 
         $img = getUploadedImage('img');
 
@@ -23,9 +24,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
           //db play
 
           $sql = $conn->prepare("INSERT INTO ambulances
-            ( regNo, hospitals, routes, img )
-            VALUES ( ?, ?, ?, ? )");
-          $sql->bind_param('ssss', $regNo, $hospitals, $routes, $img);
+            ( regNo, hospitals, routes, img, price )
+            VALUES ( ?, ?, ?, ?, ? )");
+          $sql->bind_param('sssss', $regNo, $hospitals, $routes, $img, $price);
           if($sql->execute()) {
             echo json_encode(array(
               'status' => 1,
