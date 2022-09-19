@@ -29,11 +29,13 @@ class User {
 
     //rides n bookings
     $rides = $this->getRides();
+    $allRides = $this->getAllRides();
     //more to come eg orders etc....
 
     return array(
       "info" => $info,
       "rides" => $rides,
+      "allRides" => $allRides,
     );
 
   }
@@ -52,6 +54,23 @@ class User {
     }
     return null;
   }
+
+  public function getAllRides() {
+    global $conn;
+    $sql = $conn->prepare("SELECT * FROM bookings ORDER BY id DESC");
+    $sql->execute();
+    $result = $sql->get_result();
+    if(mysqli_num_rows($result) > 0) {
+      $data = [];
+      while ($row = mysqli_fetch_assoc($result)) {
+        $row['ambData'] = getAmbData($row['ambId']);
+        array_push($data, $row);
+      }
+      return $data;
+    }
+    return null;
+  }
+
 
   public function getRides() {
     global $conn;

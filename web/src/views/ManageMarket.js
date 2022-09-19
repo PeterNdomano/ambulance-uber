@@ -40,11 +40,9 @@ export default function SellerRequest(props) {
                       <a className="nav-link active btn btn-sm" id="mm-goods-tab" data-toggle="pill" href="#mm-goods" role="tab" aria-controls="pills-home" aria-selected="true">Ambulances</a>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link btn btn-sm" id="mm-orders-tab" data-toggle="pill" href="#mm-orders" role="tab" aria-controls="pills-profile" aria-selected="false">Rides</a>
+                      <a className="nav-link btn btn-sm" id="mm-orders-tab" data-toggle="pill" href="#mm-orders" role="tab" aria-controls="pills-profile" aria-selected="false">All Rides</a>
                     </li>
-                    <li className="nav-item">
-                      <a className="nav-link btn btn-sm" id="mm-disputes-tab" data-toggle="pill" href="#mm-disputes" role="tab" aria-controls="pills-profile" aria-selected="false">Disputes</a>
-                    </li>
+
                   </ul>
                 </div>
               </div>
@@ -55,9 +53,7 @@ export default function SellerRequest(props) {
                 <div className="tab-pane fade" id="mm-orders" role="tabpanel" aria-labelledby="debts-payable-tab">
                   <MMOrders/>
                 </div>
-                <div className="tab-pane fade" id="mm-disputes" role="tabpanel" aria-labelledby="debts-payable-tab">
-                  <MMDisputes/>
-                </div>
+
               </div>
             </>
           )
