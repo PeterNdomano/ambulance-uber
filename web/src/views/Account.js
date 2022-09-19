@@ -7,7 +7,6 @@ import { TbHeart, TbSettings } from 'react-icons/tb';
 
 export default function Account() {
   const appContext = useContext(AppContext);
-  const
 
   const showWishlist = () => {
     if(appContext.isLoggedIn()) {
@@ -119,16 +118,27 @@ export default function Account() {
           <div className="card">
             <div className="card-body">
               <div className="d-flex justify-content-between" style={{ height:"calc(0.5 * var(--topBarHeight))" }}>
-                <h3 className="mTitle align-self-center">My Rides</h3>
+                <h3 onClick={() => { console.log(appContext.authData) }} className="mTitle align-self-center">My Rides</h3>
               </div>
 
               <div className="text-left">
               {
-                (loadinRides) ?
-                getInlineLoader('var(--dark)') :
-                userRides.map((item, index) => {
-
-                })
+                (appContext.authData.user.rides && appContext.authData.user.rides.length > 0 ) ?
+                appContext.authData.user.rides.map((item, i) => {
+                  return (
+                    <div key={i} className="text-left">
+                      <h6>{item.ambData.regNo}</h6>
+                      <small className="text-muted">From: {item.location}</small><br/>
+                      <small className="text-muted">To: {item.location}</small><br/>
+                      <div className="text-right">
+                        <small>Status: {(Number(item.status) === 1) ? <span className="text-success font-bold">Confirmed</span> : <span className="text-danger font-bold">Pending</span>}</small><br/>
+                        <small className="">{item.date}</small><br/>
+                      </div>
+                      <hr/>
+                    </div>
+                  )
+                }) :
+                <h6>No rides were found</h6>
               }
               </div>
 

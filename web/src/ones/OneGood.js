@@ -29,6 +29,7 @@ export default function Oops(props) {
               hideMainLoader();
               if(response.status === 1) {
                 tellUser("Booking was successful", 'success');
+                appContext.auth();
                 appContext.clearModal();
               }
               else {
