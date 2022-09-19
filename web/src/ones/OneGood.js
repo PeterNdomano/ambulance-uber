@@ -21,26 +21,31 @@ export default function Oops(props) {
       let from = $('#dFrom').val();
       let to = $('#dTo').val();
 
-      if(from.trim().length > 0) {
-        if(to.trim().length > 0) {
-          showMainLoader();
-          await callApi("book_ambulance.php", { to, from, itemId:item.id }).then((response) => {
-            hideMainLoader();
-            if(response.status === 1) {
-              tellUser("Booking was successful", 'success');
-              appContext.clearModal();
-            }
-            else {
-              tellUser(response.msg);
-            }
-          })
+      if(Number(item.status) === 1) {
+        if(from.trim().length > 0) {
+          if(to.trim().length > 0) {
+            showMainLoader();
+            await callApi("book_ambulance.php", { to, from, itemId:item.id }).then((response) => {
+              hideMainLoader();
+              if(response.status === 1) {
+                tellUser("Booking was successful", 'success');
+                appContext.clearModal();
+              }
+              else {
+                tellUser(response.msg);
+              }
+            })
+          }
+          else {
+            tellUser('Invalid destination');
+          }
         }
         else {
-          tellUser('Invalid destination');
+          tellUser('Invalid location');
         }
       }
       else {
-        tellUser('Invalid location');
+        tellUser('Ambulance  not available');
       }
     }
     else {
