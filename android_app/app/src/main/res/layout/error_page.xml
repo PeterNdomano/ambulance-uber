@@ -15,15 +15,11 @@
             android:orientation="vertical"
             android:id="@+id/loader"
             android:clickable="true"
-            android:background="@color/faintWhite"
+            android:background="#fefefe"
             android:gravity="center"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_width="100dp"
-                android:src="@drawable/logo"
-                android:layout_gravity="center"
-                android:layout_height="150dp"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_gravity="center"
@@ -35,7 +31,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="150dp"
-                android:background="@color/accentColor"
+                android:background="#1e1e1e"
                 android:text="Retry"
                 android:onClick="retry"
                 android:textColor="#fefefe"
