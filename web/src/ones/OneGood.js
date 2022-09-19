@@ -16,8 +16,37 @@ export default function Oops(props) {
 
   const [ item, setItem ] = useState(props.item);
 
-  const bookNow = () => {
+  const bookNow = async () => {
+    if(appContext.isLoggedIn()) {
+      let from = $('#dFrom').val();
+      let to = $('#dTo').val();
 
+      if(from.trim().length > 0) {
+        if(to.trim().length > 0) {
+          showMainLoader();
+          await callApi("book_ambulance.php", { to, from, itemId:item.id }).then((response) => {
+            hideMainLoader();
+            if(response.status === 1) {
+              tellUser("Booking was successful", 'success');
+              appContext.clearModal();
+            }
+            else {
+              tellUser(response.msg);
+            }
+          })
+        }
+        else {
+          tellUser('Invalid destination');
+        }
+      }
+      else {
+        tellUser('Invalid location');
+      }
+    }
+    else {
+      appContext.showLoginPage();
+      tellUser('Login first');
+    }
   }
 
   useEffect(() => {
@@ -64,8 +93,12 @@ export default function Oops(props) {
           <h6 className="font-bold">Routes</h6>
           <pre className="font-light">{item.routes}</pre>
           <div className="form-group">
-            <label>Your Location</label>
-            <textarea className="form-control"></textarea>
+            <label>From</label>
+            <input id="dFrom" className="form-control" />
+          </div>
+          <div className="form-group">
+            <label>To</label>
+            <input id="dTo" className="form-control" />
           </div>
         </div>
 
