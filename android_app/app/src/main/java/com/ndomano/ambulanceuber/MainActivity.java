@@ -1,4 +1,4 @@
-package com.casmedia.calipa;
+package com.ndomano.ambulanceuber;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,8 +9,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import com.androidnetworking.AndroidNetworking;
 
 import im.delight.android.webview.AdvancedWebView;
 
@@ -23,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AndroidNetworking.initialize(getApplicationContext());
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         setContentView(R.layout.activity_main);
         loader = (LinearLayout) findViewById(R.id.loader);
