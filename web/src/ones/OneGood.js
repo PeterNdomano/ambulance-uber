@@ -21,7 +21,7 @@ export default function Oops(props) {
       let from = $('#dFrom').val();
       let to = $('#dTo').val();
 
-      if(Number(item.status) === 1) {
+      if(Number(item.status) === 0) {
         if(from.trim().length > 0) {
           if(to.trim().length > 0) {
             showMainLoader();
