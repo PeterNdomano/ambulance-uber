@@ -15,6 +15,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
       ){
 
         $regNo = htmlspecialchars($_POST['regNo']);
+        $price = htmlspecialchars($_POST['price']);
         $itemId = htmlspecialchars($_POST['itemId']);
         $hospitals = htmlspecialchars($_POST['hospitals']);
         $routes = htmlspecialchars($_POST['routes']);
@@ -30,9 +31,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             regNo = ?,
             hospitals = ?,
             routes = ?,
-            img = ?
+            img = ?,
+            price = ?
             WHERE id = ?");
-          $sql->bind_param('sssss', $regNo, $hospitals, $routes, $img, $itemId);
+          $sql->bind_param('ssssss', $regNo, $hospitals, $routes, $img, $price, $itemId);
           if($sql->execute()) {
             echo json_encode(array(
               'status' => 1,

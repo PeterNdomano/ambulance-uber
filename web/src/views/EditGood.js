@@ -15,33 +15,40 @@ export default function NewAmb(props) {
     let regNo = $('#aRegNo').val();
     let hospitals = $('#aHospitals').val();
     let routes = $('#aRoutes').val();
+    let price = $('#aPrice').val();
     let img = document.getElementById('img').files[0];
 
     if(regNo.trim().length > 0) {
       if(hospitals.trim().length > 0) {
         if(routes.trim().length > 0) {
           if(img || !img) {
-            let formData = new FormData();
-            formData.append('itemId', item.id);
-            formData.append('regNo', regNo);
-            formData.append('hospitals', hospitals);
-            formData.append('routes', routes);
-            formData.append('img', img);
+            if(Number(price) > 0) {
+              let formData = new FormData();
+              formData.append('itemId', item.id);
+              formData.append('regNo', regNo);
+              formData.append('hospitals', hospitals);
+              formData.append('routes', routes);
+              formData.append('price', price);
+              formData.append('img', img);
 
-            showMainLoader();
-            await callApi2("edit_ambulance.php", formData).then((response) => {
-              hideMainLoader();
-              if(response.status === 1) {
-                tellUser('Ambulance was edited', 'success');
-                appContext.clearModal();
-                if(props.onSuccess) {
-                  props.onSuccess();
+              showMainLoader();
+              await callApi2("edit_ambulance.php", formData).then((response) => {
+                hideMainLoader();
+                if(response.status === 1) {
+                  tellUser('Ambulance was edited', 'success');
+                  appContext.clearModal();
+                  if(props.onSuccess) {
+                    props.onSuccess();
+                  }
                 }
-              }
-              else {
-                tellUser(response.msg);
-              }
-            });
+                else {
+                  tellUser(response.msg);
+                }
+              });
+            }
+            else {
+              tellUser('Invalid price per kilometer');
+            }
           }
           else {
             tellUser('Please upload an image of this ambulance');
@@ -92,6 +99,10 @@ export default function NewAmb(props) {
         </div>
 
         <div className="col-sm-12 col-md-6">
+          <div className="form-group">
+            <label>Price Per Kilometer</label>
+            <input defaultValue={item.price} id="aPrice" type="number" className="form-control"/>
+          </div>
 
           <div className="form-group">
             <label>Image</label><hr/>
