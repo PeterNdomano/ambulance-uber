@@ -27,11 +27,13 @@ class User {
     $info = unsetSensitiveUserData($this->getData());
     $info['phone'] = ($info['usePhone']) ? ("+".$info['countryCode']." ".$info['phone']) : $info['phone'] ;
 
-
+    //rides n bookings
+    $rides = $this->getRides();
     //more to come eg orders etc....
 
     return array(
       "info" => $info,
+      "rides" => $rides,
     );
 
   }
@@ -44,6 +46,23 @@ class User {
     if(mysqli_num_rows($result) > 0) {
       $data = [];
       while ($row = mysqli_fetch_assoc($result)) {
+        array_push($data, $row);
+      }
+      return $data;
+    }
+    return null;
+  }
+
+  public function getRides() {
+    global $conn;
+    $sql = $conn->prepare("SELECT * FROM bookings WHERE userId = ? ORDER BY id DESC");
+    $sql->bind_params('s', $this->id);
+    $sql->execute();
+    $result = $sql->get_result();
+    if(mysqli_num_rows($result) > 0) {
+      $data = [];
+      while ($row = mysqli_fetch_assoc($result)) {
+        $row['ambData'] = getAmbData($row['ambId']);
         array_push($data, $row);
       }
       return $data;

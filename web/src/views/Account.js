@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { AppContext } from '../App';
 import { BsPersonCircle } from 'react-icons/bs';
-import { tellUser } from '../Helpers';
+import { tellUser, getInlineLoader, } from '../Helpers';
 import { MdLogin, MdOutlineLocalShipping, MdOutlinePayments, MdNavigateNext, MdOutlineAdd, MdLogout } from 'react-icons/md'
 import { TbHeart, TbSettings } from 'react-icons/tb';
 
 export default function Account() {
   const appContext = useContext(AppContext);
+  const
 
   const showWishlist = () => {
     if(appContext.isLoggedIn()) {
@@ -121,44 +122,14 @@ export default function Account() {
                 <h3 className="mTitle align-self-center">My Rides</h3>
               </div>
 
-              <div className="d-flex justify-content-between" style={{ height:"calc(0.5 * var(--topBarHeight))" }}>
-                <h3 className="mCat align-self-center">
-                  Unpaid
-                  <span className="mLabel">900</span>
-                </h3>
-                <h6 className="mBtn align-self-center"><MdNavigateNext size={25}/></h6>
-              </div>
+              <div className="text-left">
+              {
+                (loadinRides) ?
+                getInlineLoader('var(--dark)') :
+                userRides.map((item, index) => {
 
-              <div className="d-flex justify-content-between" style={{ height:"calc(0.5 * var(--topBarHeight))" }}>
-                <h3 className="mCat align-self-center">
-                  Paid
-                  <span className="mLabel">900</span>
-                </h3>
-                <h6 className="mBtn align-self-center"><MdNavigateNext size={25}/></h6>
-              </div>
-
-              <div className="d-flex justify-content-between" style={{ height:"calc(0.5 * var(--topBarHeight))" }}>
-                <h3 className="mCat align-self-center">
-                  Shipped
-                  <span className="mLabel">900</span>
-                </h3>
-                <h6 className="mBtn align-self-center"><MdNavigateNext size={25}/></h6>
-              </div>
-
-              <div className="d-flex justify-content-between" style={{ height:"calc(0.5 * var(--topBarHeight))" }}>
-                <h3 className="mCat align-self-center">
-                  Delivered
-                  <span className="mLabel">900</span>
-                </h3>
-                <h6 className="mBtn align-self-center"><MdNavigateNext size={25}/></h6>
-              </div>
-
-              <div className="d-flex justify-content-between" style={{ height:"calc(0.5 * var(--topBarHeight))" }}>
-                <h3 className="mCat align-self-center">
-                  In Dispute
-                  <span className="mLabel">900</span>
-                </h3>
-                <h6 className="mBtn align-self-center"><MdNavigateNext size={25}/></h6>
+                })
+              }
               </div>
 
             </div>
