@@ -105,8 +105,13 @@ export default function App() {
     return false;
   }
 
-  const logOut = () => {
-    tellUser('Logging out please wait')
+  const logOut = async () => {
+    tellUser('Logging out please wait....')
+    showMainLoader();
+    await callApi("logout.php", {}).then(response => {
+      hideMainLoader();
+      auth();
+    })
   }
 
   const init = async () => {

@@ -89,16 +89,18 @@ export default function Account() {
           </div>
 
 
-          <div className="d-flex justify-content-end">
-            <div onClick={showWishlist} className="text-center p-2" style={{ cursor:"pointer" }}>
-              <TbHeart className="mShortcutIcon"/>
-              <h3 className="mShortcutTitle">Change<br/>Password</h3>
+          {/*
+            <div className="d-flex justify-content-end">
+              <div onClick={showWishlist} className="text-center p-2" style={{ cursor:"pointer" }}>
+                <TbHeart className="mShortcutIcon"/>
+                <h3 className="mShortcutTitle">Change<br/>Password</h3>
+              </div>
+              <div onClick={showSettings} className="text-center p-2" style={{ cursor:"pointer" }}>
+                <TbSettings className="mShortcutIcon"/>
+                <h3 className="mShortcutTitle">Change<br/>Email/Phone</h3>
+              </div>
             </div>
-            <div onClick={showSettings} className="text-center p-2" style={{ cursor:"pointer" }}>
-              <TbSettings className="mShortcutIcon"/>
-              <h3 className="mShortcutTitle">Change<br/>Email/Phone</h3>
-            </div>
-          </div>
+            */}
 
           <div className="text-right">
             {
@@ -121,26 +123,30 @@ export default function Account() {
                 <h3 onClick={() => { console.log(appContext.authData) }} className="mTitle align-self-center">My Rides</h3>
               </div>
 
-              <div className="text-left">
               {
-                (appContext.authData.user.rides && appContext.authData.user.rides.length > 0 ) ?
-                appContext.authData.user.rides.map((item, i) => {
-                  return (
-                    <div key={i} className="text-left">
-                      <h6>{item.ambData.regNo}</h6>
-                      <small className="text-muted">From: {item.location}</small><br/>
-                      <small className="text-muted">To: {item.location}</small><br/>
-                      <div className="text-right">
-                        <small>Status: {(Number(item.status) === 1) ? <span className="text-success font-bold">Confirmed</span> : <span className="text-danger font-bold">Pending</span>}</small><br/>
-                        <small className="">{item.date}</small><br/>
+                (appContext.isLoggedIn()) ?
+                <div className="text-left">
+                {
+                  (appContext.authData.user.rides && appContext.authData.user.rides.length > 0 ) ?
+                  appContext.authData.user.rides.map((item, i) => {
+                    return (
+                      <div key={i} className="text-left">
+                        <h6>{item.ambData.regNo}</h6>
+                        <small className="text-muted">From: {item.location}</small><br/>
+                        <small className="text-muted">To: {item.location}</small><br/>
+                        <div className="text-right">
+                          <small>Status: {(Number(item.status) === 1) ? <span className="text-success font-bold">Confirmed</span> : <span className="text-danger font-bold">Pending</span>}</small><br/>
+                          <small className="">{item.date}</small><br/>
+                        </div>
+                        <hr/>
                       </div>
-                      <hr/>
-                    </div>
-                  )
-                }) :
-                <h6>No rides were found</h6>
+                    )
+                  }) :
+                  <h6>No rides were found</h6>
+                }
+                </div> :
+                <div className="text-right" style={{ marginTop:"20px" }}><small className="text-muted">Your rides and bookings will appear here</small></div>
               }
-              </div>
 
             </div>
           </div>
