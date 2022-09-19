@@ -28,6 +28,23 @@ export default function Oops(props) {
     })
   }
 
+  const changeStatus = async () => {
+    let status = (Number(item.status) === 1) ? '0' : '1';
+    showMainLoader();
+    await callApi("change_status_amb.php", { itemId: item.id, status }).then((response)=> {
+      hideMainLoader();
+      if(response.status === 1) {
+        tellUser('Ambulance status was changed', 'success');
+        if(props.onSuccess){
+          props.onSuccess();
+        }
+      }
+      else {
+        tellUser(response.msg);
+      }
+    })
+  }
+
   const editItem = () => {
     appContext.setModal(
       "Edit Good",
@@ -52,17 +69,28 @@ export default function Oops(props) {
         <small>{item.routes}</small>
 
 
+
+
         <div className="text-right" style={{ marginTop:"20px" }}>
+          <h6 className="text-muted text-success" style={{ fontSize:"13px" }}>Status: { (Number(item.status) === 0) ? <span className="font-bold">Available</span> : <span className="font-bold text-danger">Not Available</span>}</h6>
           <button
             className="btn btn-sm font-bold"
             onClick={() => {
-              appContext.setDialog(item.title+' will be deleted', deleteItem)
+              appContext.setDialog(item.regNo+' will be deleted', deleteItem)
             }}
           >
             Delete
           </button>
           <button onClick={editItem} className="btn btn-sm font-bold">
             Edit
+          </button>
+          <button
+            className="btn btn-sm font-bold"
+            onClick={() => {
+              appContext.setDialog('Confirm changing availability for '+item.regNo, changeStatus)
+            }}
+          >
+            Change Availability
           </button>
         </div>
       </div>
