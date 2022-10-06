@@ -9,8 +9,8 @@ import SellerRequest from './views/SellerRequest';
 import ManageMarket from './views/ManageMarket';
 import OneGood from './ones/OneGood';
 
-export const BASE_API_URL = 'github_projects/ambulance-uber/api/';
-//export const BASE_API_URL = '/igolyn/api/';
+//export const BASE_API_URL = 'github_projects/ambulance-uber/api/';
+export const BASE_API_URL = '/amuber/api/';
 
 export function isMobile() {
   let screenWidth = window.innerWidth;

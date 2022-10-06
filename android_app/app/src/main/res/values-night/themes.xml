@@ -1,16 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.AmbulanceUber" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.AmbulanceUber" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#00f</item>
         <item name="colorPrimaryVariant">#00f</item>
         <item name="colorOnPrimary">#00f</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#fefefe</item>
-        <item name="colorSecondaryVariant">#fefefe</item>
-        <item name="colorOnSecondary">#fefefe</item>
+        <item name="colorSecondary">#1e1e1e</item>
+        <item name="colorSecondaryVariant">#1e1e1e</item>
+        <item name="colorOnSecondary">#1e1e1e</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">#fefefe</item>
         <!-- Customize your theme here. -->
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
 </resources>
