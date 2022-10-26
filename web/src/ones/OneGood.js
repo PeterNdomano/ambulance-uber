@@ -4,6 +4,8 @@ import NavBar from '../components/NavBar';
 import { BsPersonCircle } from 'react-icons/bs';
 import { BASE_API_URL, tellUser, showMainLoader, hideMainLoader, getInlineLoader, callApi, formatMoney } from '../Helpers';
 import { MdNavigateNext, MdOutlineNavigateBefore } from 'react-icons/md'
+import { FaCcPaypal } from 'react-icons/fa';
+import { HiCreditCard } from 'react-icons/hi';
 import { TbHeart, TbShoppingCart } from 'react-icons/tb';
 import { FiShoppingCart } from 'react-icons/fi';
 import $ from 'jquery';
@@ -20,22 +22,42 @@ export default function Oops(props) {
     if(appContext.isLoggedIn()) {
       let from = $('#dFrom').val();
       let to = $('#dTo').val();
+      let creditCard = $('#dCreditCard').val();
+      let cvv = $('#dCvv').val();
+      let exp = $('#dExp').val();
+
 
       if(Number(item.status) === 0) {
         if(from.trim().length > 0) {
           if(to.trim().length > 0) {
-            showMainLoader();
-            await callApi("book_ambulance.php", { to, from, itemId:item.id }).then((response) => {
-              hideMainLoader();
-              if(response.status === 1) {
-                tellUser("Booking was successful", 'success');
-                appContext.auth();
-                appContext.clearModal();
+            if(creditCard.trim().length === 16) {
+              if(exp.trim().length === 5) {
+                if(cvv.trim().length === 3) {
+                  showMainLoader();
+                  await callApi("book_ambulance.php", { to, from, itemId:item.id, creditCard, cvv, exp }).then((response) => {
+                    hideMainLoader();
+                    if(response.status === 1) {
+                      tellUser("Booking was successful, please wait for admin confirmation", 'success');
+                      appContext.auth();
+                      appContext.clearModal();
+                    }
+                    else {
+                      tellUser(response.msg);
+                    }
+                  })
+                }
+                else {
+                  tellUser('Invalid CVV');
+                }
               }
               else {
-                tellUser(response.msg);
+                tellUser('Invalid card expiry date');
               }
-            })
+            }
+            else {
+              tellUser('Invalid credit card number')
+            }
+
           }
           else {
             tellUser('Invalid destination');
@@ -98,20 +120,41 @@ export default function Oops(props) {
 
         <div className="mDescription">
           <h6 className="font-bold">Routes</h6>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.7149768465297!2d39.27081601441442!3d-6.8044858950819105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185c4b9bb8d71d0b%3A0x14ba7984fd6c1064!2sMuhimbili%20National%20Hospital!5e0!3m2!1sen!2stz!4v1666815084004!5m2!1sen!2stz" width="600px" height="450px" style={{ border:"0" }} allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
           <pre className="font-light">{item.routes}</pre>
-          <div className="form-group">
-            <label>From</label>
-            <input id="dFrom" className="form-control" />
+          <div className="row">
+            <div className="form-group col-6">
+              <label>From</label>
+              <input id="dFrom" className="form-control" />
+            </div>
+            <div className="form-group col-6">
+              <label>To</label>
+              <input id="dTo" className="form-control" />
+            </div>
           </div>
-          <div className="form-group">
-            <label>To</label>
-            <input id="dTo" className="form-control" />
+          <div className="row">
+            <div className="form-group col-12 text-center">
+              <FaCcPaypal size={60}/>
+              <HiCreditCard size={78}/>
+            </div>
+            <div className="form-group col-12">
+              <label>Card Number</label>
+              <input maxLength={16} id="dCreditCard" placeholder="XXXXXXXXXXXXXXXX" className="form-control" />
+            </div>
+            <div className="form-group col-6">
+              <label>EXP</label>
+              <input maxLength={5} id="dExp" className="form-control" />
+            </div>
+            <div className="form-group col-6">
+              <label>CVV</label>
+              <input maxLength={3} id="dCvv" className="form-control" />
+            </div>
           </div>
         </div>
 
         <div className="mCheckout">
           <button onClick={bookNow} className="btn btn-ndoms btn-block btn-dark" style={{ height:"60px" }}>
-            Book Now
+            Pay & Book
           </button>
         </div>
 

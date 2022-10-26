@@ -133,7 +133,7 @@ export default function Account() {
                       <div key={i} className="text-left">
                         <h6>{item.ambData.regNo}</h6>
                         <small className="text-muted">From: {item.location}</small><br/>
-                        <small className="text-muted">To: {item.location}</small><br/>
+                        <small className="text-muted">To: {item.destination}</small><br/>
                         <div className="text-right">
                           <small>Status: {(Number(item.status) === 1) ? <span className="text-success font-bold">Confirmed</span> : <span className="text-danger font-bold">Pending</span>}</small><br/>
                           <small className="">{item.date}</small><br/>
