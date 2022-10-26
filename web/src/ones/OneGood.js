@@ -120,7 +120,7 @@ export default function Oops(props) {
 
         <div className="mDescription">
           <h6 className="font-bold">Routes</h6>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.7149768465297!2d39.27081601441442!3d-6.8044858950819105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185c4b9bb8d71d0b%3A0x14ba7984fd6c1064!2sMuhimbili%20National%20Hospital!5e0!3m2!1sen!2stz!4v1666815084004!5m2!1sen!2stz" width="600px" height="450px" style={{ border:"0" }} allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6147581083633!2d35.742234914225776!3d-6.182286162296207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184de5576ca8c51d%3A0x498951ebfb7c228c!2sDodoma%20Regional%20Referral%20Hospital!5e0!3m2!1sen!2stz!4v1666819420583!5m2!1sen!2stz" width="600px" height="450px" style={{ border:"0" }} allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
           <pre className="font-light">{item.routes}</pre>
           <div className="row">
             <div className="form-group col-6">
