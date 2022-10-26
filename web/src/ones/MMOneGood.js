@@ -65,7 +65,7 @@ export default function Oops(props) {
       <div className="card-body">
         <h3 className="mTitle">{item.regNo}</h3>
 
-        <h6 className="mPrice">{item.hospitals}</h6>
+        <h6 className="mPrice">{formatMoney(item.price)}</h6>
         <small>{item.routes}</small>
 
 

@@ -13,7 +13,7 @@ export default function TopBar(props) {
       <div className="container mShadow-4">
         <div className="d-flex" style={{ height:"100%" }}>
           <div className="align-self-center flex-grow-1 d-flex" style={{ height:"100%" }}>
-            <h3 className="mTitle align-self-center">Ambulance UBER</h3>
+            <h3 className="mTitle align-self-center">Ambulance Service</h3>
           </div>
           <div className="align-self-center flex-grow-1 d-flex justify-content-end" style={{ height:"100%" }}>
             <button onClick={() => window.location.href="#/home"} className="btn btn-sm mBtn align-self-center">

@@ -77,14 +77,15 @@ export default function Oops(props) {
         </div>
 
         <div className="mPrice">
-          <small>Price Per Kilometer</small><br/>
+          <small>Price</small><br/>
           <h4 className="m1">Tsh {formatMoney(item.price)}</h4>
         </div>
 
-        <div className="mPrice">
+
+        {/*<div className="mPrice">
           <small>Hospitals</small><br/>
           <h4 className="m1">{item.hospitals}</h4>
-        </div>
+        </div>*/}
 
         <div className="mPrice">
           <small>Availability Status</small><br/>

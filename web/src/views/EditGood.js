@@ -13,7 +13,7 @@ export default function NewAmb(props) {
 
   const submit = async () => {
     let regNo = $('#aRegNo').val();
-    let hospitals = $('#aHospitals').val();
+    let hospitals = '..'; //$('#aHospitals').val();
     let routes = $('#aRoutes').val();
     let price = $('#aPrice').val();
     let img = document.getElementById('img').files[0];
@@ -84,11 +84,11 @@ export default function NewAmb(props) {
             <input defaultValue={item.regNo} maxLength={200} id="aRegNo" type="text" className="form-control"/>
           </div>
 
-          <div className="form-group">
+          {/*<div className="form-group">
             <label>Hospital(s)</label>
             <small className="form-text text-muted">Separate multiple with commas</small>
             <input defaultValue={item.hospitals} id="aHospitals" type="text" className="form-control"/>
-          </div>
+          </div>*/}
 
           <div className="form-group">
             <label>Serving areas and routes</label>
@@ -100,7 +100,7 @@ export default function NewAmb(props) {
 
         <div className="col-sm-12 col-md-6">
           <div className="form-group">
-            <label>Price Per Kilometer</label>
+            <label>Price</label>
             <input defaultValue={item.price} id="aPrice" type="number" className="form-control"/>
           </div>
 
