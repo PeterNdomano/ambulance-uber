@@ -12,6 +12,7 @@ import './index.css';
 import App from './App';
 import { HashRouter, Route, Routes, NotFound } from 'react-router-dom';
 
+
 ReactDOM.render(
   <HashRouter basename="/">
     <Routes>
